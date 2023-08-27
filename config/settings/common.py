@@ -27,6 +27,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+CUSTOM_APPS = [
+]
+
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'django_filters',
+    'django_extensions',
+    'drf_spectacular',
+
+
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
