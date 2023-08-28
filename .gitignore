@@ -2,3 +2,6 @@ venv/
 db.sqlite3
 __pycache__/
 .idea/
+__makemigrations__/
+__init__.py
+migrations/
