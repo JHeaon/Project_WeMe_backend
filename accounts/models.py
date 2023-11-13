@@ -33,7 +33,9 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=100)
+    nickname = models.CharField(max_length=30, blank=True)
+    position = models.ManyToManyField("api.Position", blank=True)
+    techstack = models.ManyToManyField("api.TechStack", blank=True)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
