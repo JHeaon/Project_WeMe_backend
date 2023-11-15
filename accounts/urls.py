@@ -10,6 +10,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register("signup", SignUpViewSet, basename="signup")
 router.register("user", UserInformationViewSet, basename="user")
+router.register("email_check", EmailCheckView, basename="emailcheck")
 
 urlpatterns = [
     path("login/", TokenObtainPairView.as_view(), name="login"),

@@ -10,7 +10,7 @@ class SignUpSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["email", "password", "re_password"]
+        fields = ["email", "nickname", "password", "re_password"]
 
     def validate(self, data):
         if data.get("password") != data.get("re_password"):
@@ -20,7 +20,9 @@ class SignUpSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         email = validated_data.get("email")
         password = validated_data.get("password")
-        user = User(email=email)
+        nickname = validated_data.get("nickname")
+
+        user = User(email=email, nickname=nickname)
         user.set_password(password)
 
         user.save()
@@ -31,3 +33,9 @@ class UserInformationSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = "__all__"
+
+
+class EmailCheckSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["email"]
