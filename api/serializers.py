@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Post, Position, TechStack
+from models import Post, Position, TechStack
+
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -7,7 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class  PositionSerializer(serializers.ModelSerializer):
+class PositionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Position
         fields = '__all__'
