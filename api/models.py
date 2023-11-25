@@ -4,30 +4,30 @@ from django.db import models
 
 class Post(models.Model):
     PROJECT_KIND = [
-        ('study', 'study'),
-        ('project', 'project'),
+        ('스터디', '스터디'),
+        ('프로젝트', '프로젝트'),
     ]
 
     STATUS_KIND = [
-        ('online', 'online'),
-        ('offline', 'offline'),
+        ('온라인', '온라인'),
+        ('오프라인', '오프라인'),
     ]
 
     DURATION_KIND = [
-        ('1 개월', '1 개월'),
-        ('2 개월', '2 개월'),
-        ('3 개월', '3 개월'),
-        ('4 개월', '4 개월'),
-        ('5 개월', '5 개월'),
-        ('6 개월', '6 개월'),
-        ('1 년 이상', '1 년 이상'),
+        ('1개월', '1개월'),
+        ('2개월', '2개월'),
+        ('3개월', '3개월'),
+        ('4개월', '4개월'),
+        ('5개월', '5개월'),
+        ('6개월', '6개월'),
+        ('1년 이상', '1년 이상'),
     ]
 
-
-    recruit = models.ManyToManyField('accounts.User')
+    author = models.ForeignKey('accounts.User', on_delete=models.CASCADE, related_name='posts_written')
     position = models.ManyToManyField('api.Position')
     techstack = models.ManyToManyField('api.TechStack')
 
+    recruit = models.IntegerField(default=0)
     kind = models.CharField(max_length=10, choices=PROJECT_KIND, default='study')
     status = models.CharField(max_length=10, choices=STATUS_KIND, default='online')
     duration = models.CharField(max_length=10, choices=DURATION_KIND, default='1 개월')

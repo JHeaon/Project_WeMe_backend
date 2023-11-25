@@ -1,11 +1,13 @@
 from rest_framework import serializers
-from models import Post, Position, TechStack
+from .models import Post, Position, TechStack
 
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
+        read_only_fields = ['views', 'created_at', 'updated_at']
+
 
 
 class PositionSerializer(serializers.ModelSerializer):
